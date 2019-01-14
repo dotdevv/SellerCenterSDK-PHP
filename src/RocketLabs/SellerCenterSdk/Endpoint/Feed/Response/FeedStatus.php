@@ -4,24 +4,26 @@ namespace RocketLabs\SellerCenterSdk\Endpoint\Feed\Response;
 
 use RocketLabs\SellerCenterSdk\Core\Response\GenericResponse;
 use RocketLabs\SellerCenterSdk\Endpoint\Feed\Model\Feed;
-use RocketLabs\SellerCenterSdk\Endpoint\Feed\Model\FeedCollection;
 
 /**
  * Class FeedStatus
  */
 class FeedStatus extends GenericResponse
 {
-    const FEED_KEY = 'Feed';
-
-    /** @var FeedCollection  */
-    private $feeds;
+    const FEEDS_KEY = 'Orders';
+    const FEED_KEY = 'Order';
 
     /**
-     * @return FeedCollection
+     * @var Feed
      */
-    public function getFeeds()
+    private $feed;
+
+    /**
+     * @return Feed
+     */
+    public function getFeed()
     {
-        return $this->feeds;
+        return $this->feed;
     }
 
     /**
@@ -31,28 +33,8 @@ class FeedStatus extends GenericResponse
     {
         parent::processDecodedResponse($responseData);
 
-        $feeds = [];
-        if (isset($this->body[static::FEED_KEY])) {
-            $feeds = $this->prepareFeeds();
+        if (isset($this->body[static::FEEDS_KEY][static::FEED_KEY])) {
+            $this->feed = new Feed($this->body[static::FEEDS_KEY][static::FEED_KEY]);
         }
-
-        $this->feeds = new FeedCollection($feeds);
-    }
-
-    /**
-     * @return Feed[]
-     */
-    protected function prepareFeeds()
-    {
-        if (isset($this->body[static::FEED_KEY][Feed::FEED_KEY])) {
-            return [new Feed($this->body[static::FEED_KEY])];
-        }
-
-        return array_map(
-            function (array $feedData) {
-                return new Feed($feedData);
-            },
-            $this->body[static::FEED_KEY]
-        );
     }
 }
