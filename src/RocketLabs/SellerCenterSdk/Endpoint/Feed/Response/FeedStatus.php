@@ -10,8 +10,7 @@ use RocketLabs\SellerCenterSdk\Endpoint\Feed\Model\Feed;
  */
 class FeedStatus extends GenericResponse
 {
-    const FEEDS_KEY = 'Feeds';
-    const FEED_KEY = 'Feed';
+    const FEED_KEY = 'FeedDetail';
 
     /**
      * @var Feed
@@ -33,8 +32,8 @@ class FeedStatus extends GenericResponse
     {
         parent::processDecodedResponse($responseData);
 
-        if (isset($this->body[static::FEEDS_KEY][static::FEED_KEY])) {
-            $this->feed = new Feed($this->body[static::FEEDS_KEY][static::FEED_KEY]);
+        if (isset($this->body[static::FEED_KEY])) {
+            $this->feed = new Feed($this->body[static::FEED_KEY]);
         }
     }
 }
