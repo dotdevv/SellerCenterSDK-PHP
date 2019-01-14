@@ -10,8 +10,8 @@ use RocketLabs\SellerCenterSdk\Endpoint\Feed\Model\Feed;
  */
 class FeedStatus extends GenericResponse
 {
-    const FEEDS_KEY = 'Orders';
-    const FEED_KEY = 'Order';
+    const FEEDS_KEY = 'Feeds';
+    const FEED_KEY = 'Feed';
 
     /**
      * @var Feed
