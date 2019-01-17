@@ -111,6 +111,11 @@ abstract class ProductAbstract extends RequestBuilderAbstract
     protected $quantity;
 
     /**
+     * @var string
+     */
+    protected $productGroup;
+
+    /**
      * @param string $sellerSku
      * @return static
      */
@@ -307,6 +312,16 @@ abstract class ProductAbstract extends RequestBuilderAbstract
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+        return $this;
+    }
+
+    /**
+     * @param string $productGroup
+     * @return static
+     */
+    public function setProductGroup($productGroup)
+    {
+        $this->productGroup = $productGroup;
         return $this;
     }
 
