@@ -22,7 +22,7 @@ abstract class ModelAbstract
     /**
      * @var array
      */
-    protected $data = [];
+    public $data = [];
 
     /**
      * @param array $data
