@@ -11,6 +11,7 @@ class Address extends ModelAbstract
 {
     const FIRST_NAME = 'FirstName';
     const LAST_NAME = 'LastName';
+    const CUSTOMER_EMAIL = 'CustomerEmail';
     const PHONE = 'Phone';
     const PHONE2 = 'Phone2';
     const ADDRESS = 'Address1';
@@ -30,6 +31,7 @@ class Address extends ModelAbstract
     protected $fieldDefinition = [
         self::FIRST_NAME => self::TYPE_STRING,
         self::LAST_NAME => self::TYPE_STRING,
+        self::CUSTOMER_EMAIL => self::TYPE_STRING,
         self::PHONE => self::TYPE_STRING,
         self::PHONE2 => self::TYPE_STRING,
         self::ADDRESS => self::TYPE_STRING,
@@ -58,6 +60,14 @@ class Address extends ModelAbstract
     public function getLastName()
     {
         return $this->data[self::LAST_NAME];
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerEmail()
+    {
+        return $this->data[self::CUSTOMER_EMAIL];
     }
 
     /**
