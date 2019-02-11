@@ -9,6 +9,7 @@ use RocketLabs\SellerCenterSdk\Endpoint\Order\Request\GetOrderItems;
 use RocketLabs\SellerCenterSdk\Endpoint\Order\Request\SetStatusToCanceled;
 use RocketLabs\SellerCenterSdk\Endpoint\Order\Request\SetStatusToPackedByMarketplace;
 use RocketLabs\SellerCenterSdk\Endpoint\Order\Request\SetStatusToReadyToShip;
+use RocketLabs\SellerCenterSdk\Endpoint\Order\Request\SetStatusToShipped;
 
 /**
  * Class Order
@@ -63,6 +64,16 @@ final class Order
     {
         return new SetStatusToCanceled($orderItemId, $reason, $reasonDetail);
     }
+
+    /**
+     * @param int $orderItemId
+     * @return SetStatusToShipped
+     */
+    public function setStatusToShipped($orderItemId)
+    {
+        return new SetStatusToShipped($orderItemId);
+    }
+
 
     /**
      * @param int[] $orderItemIds
