@@ -15,7 +15,7 @@ abstract class ProductCollectionAbstract extends RequestBuilderAbstract
     /**
      * @var ProductAbstract
      */
-    protected $products;
+    protected $products = [];
 
     /**
      * @return array
