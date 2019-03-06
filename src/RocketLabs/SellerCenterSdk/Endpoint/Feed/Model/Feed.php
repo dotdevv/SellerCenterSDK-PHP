@@ -19,6 +19,7 @@ class Feed extends ModelAbstract
     const PROCESSED_RECORDS_KEY = 'ProcessedRecords';
     const FAILED_RECORDS_KEY = 'FailedRecords';
     const FAILURE_REPORTS_KEY = 'FailureReports';
+    const FEED_ERRORS_KEY = 'FeedErrors';
 
     /**
      * @var array
@@ -34,6 +35,7 @@ class Feed extends ModelAbstract
         self::PROCESSED_RECORDS_KEY => self::TYPE_INT,
         self::FAILED_RECORDS_KEY => self::TYPE_INT,
         self::FAILURE_REPORTS_KEY => FailureReport::class,
+        self::FEED_ERRORS_KEY => self::TYPE_MIXED,
     ];
 
     /**
@@ -114,5 +116,13 @@ class Feed extends ModelAbstract
     public function getFailureReports()
     {
         return $this->data[self::FAILURE_REPORTS_KEY];
+    }
+
+    /**
+     * @return FeedErrors
+     */
+    public function getFeedErrors()
+    {
+        return $this->data[self::FEED_ERRORS_KEY];
     }
 }
